@@ -1,0 +1,20 @@
+ 1. Bulb Power
+ 2. Bulb Power
+ 3. Pot End
+ 4. Pot Wiper
+ 5. Pot End
+ 6. LED Recirc
+ 7. LED LO
+ 8. LED HI
+ 9. LED Def
+10. LED Econ
+
+ 1. LED +V
+ 2. LED A/C
+ 3. LED Demist
+ 4. Hi, Lo
+ 5. Up, Down
+ 6. Auto, Up, Off, Hi
+ 7. Off, Recirc
+ 8. Defrost, Recirc, Lo, Down
+ 9. Auto, Defrost
