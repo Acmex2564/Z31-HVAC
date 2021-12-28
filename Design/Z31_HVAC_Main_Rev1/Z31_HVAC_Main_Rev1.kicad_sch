@@ -5381,6 +5381,18 @@
     (pin "2" (uuid 1f92697e-c490-4080-b3b4-0a6f0a4ec60a))
   )
 
+  (sheet (at 212.09 123.19) (size 22.86 31.75) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid) (color 0 0 0 0))
+    (fill (color 0 0 0 0.0000))
+    (uuid eb0c0d77-c260-4d94-b44a-6447b497255c)
+    (property "Sheet name" "Power_Drivers" (id 0) (at 212.09 122.4784 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheet file" "Power_Drivers.kicad_sch" (id 1) (at 212.09 155.5246 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+  )
+
   (sheet (at 182.88 123.19) (size 24.13 31.75) (fields_autoplaced)
     (stroke (width 0.1524) (type solid) (color 0 0 0 0))
     (fill (color 0 0 0 0.0000))
@@ -5391,11 +5403,20 @@
     (property "Sheet file" "Signal_In.kicad_sch" (id 1) (at 182.88 155.5246 0)
       (effects (font (size 1.27 1.27)) (justify left top))
     )
+    (pin "asfd" input (at 182.88 128.27 180)
+      (effects (font (size 1.27 1.27)) (justify left))
+      (uuid e615f7b0-c96f-4564-be2c-4cc48f0bbcff)
+    )
+    (pin "qwer" input (at 182.88 130.81 180)
+      (effects (font (size 1.27 1.27)) (justify left))
+      (uuid 8aedaa06-5240-4292-974a-72555103c67e)
+    )
   )
 
   (sheet_instances
     (path "/" (page "1"))
     (path "/ede5ba18-37cd-46ce-96ce-d6f4fa9c8fa9" (page "2"))
+    (path "/eb0c0d77-c260-4d94-b44a-6447b497255c" (page "3"))
   )
 
   (symbol_instances
