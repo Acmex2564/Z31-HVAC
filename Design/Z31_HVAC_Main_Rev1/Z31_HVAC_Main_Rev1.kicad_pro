@@ -379,6 +379,8 @@
         "microvia_drill": 0.1,
         "name": "LED Trace",
         "nets": [
+          "/L1",
+          "/L2",
           "/LED_AC",
           "/LED_Def",
           "/LED_Demist",
@@ -405,9 +407,13 @@
         "microvia_drill": 0.1,
         "name": "Power Trace",
         "nets": [
-          "+12V_Battery",
+          "+12V",
           "+5V",
           "+5VA",
+          "/+12V_Battery",
+          "/A1",
+          "/A2",
+          "/A3",
           "/CR",
           "/EM",
           "/F3",
@@ -494,11 +500,19 @@
     ],
     [
       "ede5ba18-37cd-46ce-96ce-d6f4fa9c8fa9",
-      "Signal_In"
+      "Signal_In (Analog)"
     ],
     [
       "eb0c0d77-c260-4d94-b44a-6447b497255c",
       "Power_Drivers"
+    ],
+    [
+      "510a281c-4fee-420d-85c2-5d7d607170fc",
+      "Power"
+    ],
+    [
+      "bf39546c-1732-4095-9b08-4d3b86bed914",
+      "Singal_In (Discrete)"
     ]
   ],
   "text_variables": {}
