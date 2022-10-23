@@ -11,7 +11,7 @@
 class MixDoor
 {
 	public:
-		MixDoor(int feedback, int svOpen, int svClose);
+		MixDoor(int feedback, int svOpen, int svClose, char doorId);
 		
 		void begin();
 		
@@ -39,6 +39,7 @@ class MixDoor
 		int _posOpen;
 		int _posClose;
 		int _target;
+		char _id;
 		
 };
 

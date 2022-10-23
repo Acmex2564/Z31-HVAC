@@ -3,11 +3,12 @@
 #include "hvaclib.h"
 #include "MCP_CAN.h"
 
-MixDoor::MixDoor(int feedback, int svOpen, int svClose)
+MixDoor::MixDoor(int feedback, int svOpen, int svClose, char doorId)
 {
 	_feedback = feedback;
 	_svOpen = svOpen;
 	_svClose = svClose;
+	_id = doorId;
 
 };
 
@@ -56,16 +57,19 @@ void MixDoor::doorOpen()
 {
 	digitalWrite(_svOpen, HIGH);
 	digitalWrite(_svClose, LOW);
+	Serial.print('MD: '); Serial.print(_id); Serial.println(' Op');
 };
 void MixDoor::doorClose()
 {
 	digitalWrite(_svOpen, HIGH);
 	digitalWrite(_svClose, HIGH);
+	Serial.print('MD: '); Serial.print(_id); Serial.println(' Cl');
 };
 void MixDoor::doorStop()
 {
 	digitalWrite(_svOpen,LOW);
 	digitalWrite(_svClose, LOW);
+	Serial.print('MD: '); Serial.print(_id); Serial.println(' St');
 };
 void MixDoor::setTarget(int position)
 {	
@@ -252,7 +256,7 @@ void IntakeDoor::setMode(int mode)
 			digitalWrite(_svIntake2, HIGH);
 			digitalWrite(_ledRecirc, HIGH);
 			_currentPos = 2;
-			Serial.println("IntakeDoor: 1");
+			Serial.println("IntakeDoor: 2");
 			break;
 	}
 };

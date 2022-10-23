@@ -155,8 +155,8 @@ Keypad buttons = Keypad(makeKeymap(keys), rowPins, colPins, rows, cols);
 
 MCP_CAN CAN0(CAN_CS);
 
-MixDoor doorMix1 = MixDoor(IN_POSITION_1, OUT_DOOR_MIX_1_O, OUT_DOOR_MIX_1_C);
-MixDoor doorMix2 = MixDoor(IN_POSITION_2, OUT_DOOR_MIX_2_O, OUT_DOOR_MIX_2_C);
+MixDoor doorMix1 = MixDoor(IN_POSITION_1, OUT_DOOR_MIX_1_O, OUT_DOOR_MIX_1_C, 'U');
+MixDoor doorMix2 = MixDoor(IN_POSITION_2, OUT_DOOR_MIX_2_O, OUT_DOOR_MIX_2_C, 'L');
 ModeDoor doorMode = ModeDoor(OUT_DOOR_FLOOR, OUT_DOOR_HEAD);
 IntakeDoor doorIntake = IntakeDoor(OUT_DOOR_INTAKE_1, OUT_DOOR_INTAKE_3, LIGHT_REC);
 Blower fan = Blower(OUT_BLOWER_RELAY, OUT_BLOWER_SPEED, LIGHT_LOW, LIGHT_HIGH);
