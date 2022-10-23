@@ -57,19 +57,19 @@ void MixDoor::doorOpen()
 {
 	digitalWrite(_svOpen, HIGH);
 	digitalWrite(_svClose, LOW);
-	Serial.print('MD: '); Serial.print(_id); Serial.println(' Op');
+	Serial.print("MD: "); Serial.print(_id); Serial.println(" Op");
 };
 void MixDoor::doorClose()
 {
 	digitalWrite(_svOpen, HIGH);
 	digitalWrite(_svClose, HIGH);
-	Serial.print('MD: '); Serial.print(_id); Serial.println(' Cl');
+	Serial.print("MD: "); Serial.print(_id); Serial.println(" Cl");
 };
 void MixDoor::doorStop()
 {
 	digitalWrite(_svOpen,LOW);
 	digitalWrite(_svClose, LOW);
-	Serial.print('MD: '); Serial.print(_id); Serial.println(' St');
+	Serial.print("MD: "); Serial.print(_id); Serial.println(" St");
 };
 void MixDoor::setTarget(int position)
 {	
