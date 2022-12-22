@@ -382,6 +382,8 @@ Temperature::Temperature(int analogPin, int conversionSlope, int conversionInter
 	_pin = analogPin;
 	_slope = conversionSlope;
 	_intercept = conversionIntercept;
+
+  _pull = 0;
 	
 };
 Temperature::Temperature(uint8_t *rxBuffer, uint8_t targetByte)
@@ -391,9 +393,18 @@ Temperature::Temperature(uint8_t *rxBuffer, uint8_t targetByte)
 	_targetByte = targetByte;
 };
 
+Temperature::Temperature(int analogPin, int rPull, int conversionMultiplier, float conversionExponent)
+{
+  _pin = analogPin;
+  _pull = rPull;
+  _multiplier = conversionMultiplier;
+  _exponent = conversionExponent;
+  
+};
+
 void Temperature::begin()
 {
-	if (_pin < 255)
+	if ((_pin < 255) & _pull == 0)
 	{
 		pinMode(_pin, INPUT);
 		
@@ -402,11 +413,20 @@ void Temperature::begin()
 			_arrayTemperature[i] = (_slope * 5) + _intercept;
 			_sumTemperature = ((_slope * 5) + _intercept) + _sumTemperature;
 		}
+	}
+	else if (_pin < 255)
+	{
+	  for (int i = 0; i < HIST_ARRAY_SIZE - 1; i++)
+    {
+      _arrayTemperature[i] = -180;
+      _sumTemperature = -180 + _sumTemperature;
+    }
 	};
 };
 
 void Temperature::update()
 {
+	float reading;
 	if (_posPrevTemperature == HIST_ARRAY_SIZE - 1)
 	{
 		_posPrevTemperature = 0;
@@ -418,10 +438,16 @@ void Temperature::update()
 	
 	_sumTemperature = _sumTemperature - _arrayTemperature[_posPrevTemperature];
 	
-	if (_pin < 255)
+	if ((_pin < 255) & _pull == 0)
 	{
 		_arrayTemperature[_posPrevTemperature] = ((_slope * 5L * analogRead(_pin)) / ADC_MAX) + _intercept;
 	}
+  else if (_pin < 255)
+  {
+    reading = _pull / (((1024.0)/(analogRead(_pin)))-1);
+    reading = log(reading / _multiplier)/_exponent * 10;
+    _arrayTemperature[_posPrevTemperature] = (int)reading;
+  }
 	else
 	{
 		_arrayTemperature[_posPrevTemperature] = (_buffer[_targetByte] - 40)*10;

@@ -115,6 +115,11 @@ const uint8_t addrLimitsAM2 = sizeof(int) + (sizeof(int)*2);
 const int slopeNissan = -232;
 const int interceptNissan = 876;
 
+const int multiplierNissan = 16791;
+const float exponentNissan = -0.0488;
+
+const int pullTemperature = 4700;
+
 //keypad setup
 const byte rows = 4;
 const byte cols = 2;
@@ -161,11 +166,11 @@ ModeDoor doorMode = ModeDoor(OUT_DOOR_FLOOR, OUT_DOOR_HEAD);
 IntakeDoor doorIntake = IntakeDoor(OUT_DOOR_INTAKE_1, OUT_DOOR_INTAKE_3, LIGHT_REC);
 Blower fan = Blower(OUT_BLOWER_RELAY, OUT_BLOWER_SPEED, LIGHT_LOW, LIGHT_HIGH);
 
-Temperature tempLower = Temperature(IN_TEMP_LOWER, slopeNissan, interceptNissan);
-Temperature tempUpper = Temperature(IN_TEMP_UPPER, slopeNissan, interceptNissan);
-Temperature tempDuctLower = Temperature(IN_TEMP_DUCT_LOWER, slopeNissan, interceptNissan);
-Temperature tempDuctUpper = Temperature(IN_TEMP_DUCT_UPPER, slopeNissan, interceptNissan);
-Temperature tempDuctDefrost = Temperature(IN_TEMP_DUCT_DEFROST, slopeNissan, interceptNissan);
+Temperature tempLower = Temperature(IN_TEMP_LOWER, pullTemperature, multiplierNissan, exponentNissan);
+Temperature tempUpper = Temperature(IN_TEMP_UPPER, pullTemperature, multiplierNissan, exponentNissan);
+Temperature tempDuctLower = Temperature(IN_TEMP_DUCT_LOWER, pullTemperature, multiplierNissan, exponentNissan);
+Temperature tempDuctUpper = Temperature(IN_TEMP_DUCT_UPPER, pullTemperature, multiplierNissan, exponentNissan);
+Temperature tempDuctDefrost = Temperature(IN_TEMP_DUCT_DEFROST, pullTemperature, multiplierNissan, exponentNissan);
 Temperature tempAmbient = Temperature(canRxBuf, byteTemperatureAmbient);
 Temperature tempWater = Temperature(canRxBuf, byteTemperatureWater);
 
