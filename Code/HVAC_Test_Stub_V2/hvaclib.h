@@ -116,6 +116,7 @@ class Temperature
 {
 	public:
 		Temperature(int analogPin, int conversionSlope, int conversionIntercept);
+    Temperature(int analogPin, int rPull, int conversionMultiplier, float conversionExponent);
 		Temperature(uint8_t *rxBuffer, uint8_t targetByte);
 		void begin();
 		void update();
@@ -134,6 +135,10 @@ class Temperature
 		
 		uint8_t *_buffer;
 		uint8_t _targetByte;
+
+    int _pull;
+    int _multiplier;
+    float _exponent;
 };
 
 class Climate
