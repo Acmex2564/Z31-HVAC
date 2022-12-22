@@ -422,11 +422,11 @@ void loop() {
   if (!digitalRead(CAN_INT))
   {
     CAN0.readMsgBuf(&canRxID, &canRxLen, canRxBuf);
-    sprintf(msgString, "Standard ID: 0x%.3lX       DLC: %1d  Data:", canRxID, canRxLen);
-    Serial.println(msgString);
+    //sprintf(msgString, "Standard ID: 0x%.3lX       DLC: %1d  Data:", canRxID, canRxLen);
+    //Serial.println(msgString);
     if (canRxID == idPacketTemperature)
     {
-      Serial.println("Recv'd temp packet");
+      //Serial.println("Recv'd temp packet");
       tempAmbient.update();
       tempWater.update();
     }
@@ -607,7 +607,7 @@ void updateDisplay(int dispStep) {
       {
         tft.print("OFF ");
       }
-      Serial.println("flow updt");
+      //Serial.println("flow updt");
       break;
       
     case 3:
@@ -627,7 +627,7 @@ void updateDisplay(int dispStep) {
       tft.fillRoundRect(112, 66, 6, 60, 2, ST77XX_ORANGE);
       tft.drawRoundRect(112, 66, 6, 60, 2, ST77XX_WHITE);
       tft.fillRoundRect(112, 66+map(bufferVal, 0, 255, 60, 0), 6, map(bufferVal, 0, 255, 0, 60),2, ST77XX_WHITE);
-      Serial.println("bar updt");
+      //Serial.println("bar updt");
       break;
     case 4:
       break;
