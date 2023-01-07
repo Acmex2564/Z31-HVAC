@@ -84,9 +84,11 @@ int MixDoor::getTarget()
 void MixDoor::service()
 {
 	int _posCurrent;
+  _posCurrent = analogRead(_feedback);
+  Serial.print("MD: "); Serial.print(_id); Serial.print(_posCurrent); Serial.print(":"); Serial.print(_target);
 	if (((_target >= _posCurrent + _deadband) | (_target <= _posCurrent - _deadband ) ))
 	{
-		_posCurrent = analogRead(_feedback);
+		
 		if (_target > _posCurrent)
 		{
 			doorOpen();
@@ -302,14 +304,14 @@ void Blower::setSpeed(uint8_t speed)
 		digitalWrite(_rFan, HIGH);
 		analogWrite(_fanPWM, speed);
 		_currentSpeed = speed;
-		Serial.print("Fan Speed: "); Serial.println(_currentSpeed);
+		//Serial.print("Fan Speed: "); Serial.println(_currentSpeed);
 	}
 	else 
 	{
 		digitalWrite(_rFan, LOW);
 		analogWrite(_fanPWM, 0);
 		_currentSpeed = 0;
-		Serial.println("Fan off");
+		//Serial.println("Fan off");
 	}
 };
 
