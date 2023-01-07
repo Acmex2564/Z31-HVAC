@@ -57,19 +57,19 @@ void MixDoor::doorOpen()
 {
 	digitalWrite(_svOpen, HIGH);
 	digitalWrite(_svClose, LOW);
-	Serial.print("MD: "); Serial.print(_id); Serial.println(" Op");
+	Serial.print(" Cmd: "); Serial.println(" Op");
 };
 void MixDoor::doorClose()
 {
 	digitalWrite(_svOpen, HIGH);
 	digitalWrite(_svClose, HIGH);
-	Serial.print("MD: "); Serial.print(_id); Serial.println(" Cl");
+	Serial.print(" Cmd ");  Serial.println(" Cl");
 };
 void MixDoor::doorStop()
 {
 	digitalWrite(_svOpen,LOW);
 	digitalWrite(_svClose, LOW);
-	Serial.print("MD: "); Serial.print(_id); Serial.println(" St");
+	Serial.print(" Cmd: ");  Serial.println(" St");
 };
 void MixDoor::setTarget(int position)
 {	
@@ -85,7 +85,7 @@ void MixDoor::service()
 {
 	int _posCurrent;
   _posCurrent = analogRead(_feedback);
-  Serial.print("MD: "); Serial.print(_id); Serial.print(_posCurrent); Serial.print(":"); Serial.print(_target);
+  Serial.print("MD: "); Serial.print(_id); Serial.print(" "); Serial.print(_posCurrent); Serial.print(":"); Serial.print(_target);
 	if (((_target >= _posCurrent + _deadband) | (_target <= _posCurrent - _deadband ) ))
 	{
 		

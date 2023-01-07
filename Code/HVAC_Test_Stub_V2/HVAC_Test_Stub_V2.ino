@@ -207,6 +207,7 @@ long time_last_sample;
 
 const int interval_service = 500;
 long time_last_service;
+long time_last_service_fast;
 
 const int interval_can = 500;
 long time_last_can_out;
@@ -340,9 +341,13 @@ void loop() {
   {
     if (time_current - time_last_service > interval_service) {
       control.service();
+      time_last_service = time_current;
     }
-    doorMix1.service();
-    doorMix2.service();
+    if (time_current - time_last_service_fast > interval_service/4){
+      doorMix1.service();
+      doorMix2.service();
+    time_last_service_fast = time_current;
+    }
   };
 
   if (time_current - time_last_screen > interval_screen) {
