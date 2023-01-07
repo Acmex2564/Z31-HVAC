@@ -343,7 +343,7 @@ void loop() {
       control.service();
       time_last_service = time_current;
     }
-    if (time_current - time_last_service_fast > interval_service/4){
+    if (time_current - time_last_service_fast > interval_service/10){
       doorMix1.service();
       doorMix2.service();
     time_last_service_fast = time_current;

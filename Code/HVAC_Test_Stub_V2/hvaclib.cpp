@@ -453,7 +453,7 @@ void Temperature::update()
 	else
 	{
 		_arrayTemperature[_posPrevTemperature] = (_buffer[_targetByte] - 40)*10;
-		Serial.println(_buffer[_targetByte]);
+		//Serial.println(_buffer[_targetByte]);
 	};
 	
 	_sumTemperature = _sumTemperature + _arrayTemperature[_posPrevTemperature];
