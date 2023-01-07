@@ -949,6 +949,7 @@ void Climate::manualTempControl()
 	if (millis() - _timeLastTempAdjust >= _intervalTempAdjust)
 	{
 		_doorUpper->setTarget(constrain(map(_currentTargetTemp, minTargetTemp, maxTargetTemp, 0, 255), 0, 255));
+    Serial.print("Upper Tgt: "); Serial.println(_doorUpper->getTarget());
 		_doorLower->setTarget(constrain(map(_currentTargetTemp, minTargetTemp, maxTargetTemp, 0, 255), 0, 255));
 	}
 }
