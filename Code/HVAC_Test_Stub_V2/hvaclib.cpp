@@ -86,6 +86,18 @@ void MixDoor::service()
 	int _posCurrent;
   _posCurrent = analogRead(_feedback);
   Serial.print("MD: "); Serial.print(_id); Serial.print(" "); Serial.print(_posCurrent); Serial.print(":"); Serial.print(_target);
+  if ((_target <= (_posClose + _deadband)) | (_target >= (_posOpen - _deadband)))
+  {
+    if (_target <= (_posClose + _deadband))
+    {
+      doorClose();
+    }
+    else 
+    {
+      doorOpen();
+    }
+  }
+  else {
 	if (((_target >= _posCurrent + _deadband) | (_target <= _posCurrent - _deadband ) ))
 	{
 		
@@ -102,6 +114,7 @@ void MixDoor::service()
 	{
 		doorStop();
 	};
+  }
 	//Serial.print("Seek took "); Serial.print(millis() - _timeSeek); Serial.println("ms");
 	
 };
@@ -950,7 +963,15 @@ void Climate::manualTempControl()
 	{
 		_doorUpper->setTarget(constrain(map(_currentTargetTemp, minTargetTemp, maxTargetTemp, 0, 255), 0, 255));
     Serial.print("Upper Tgt: "); Serial.println(_doorUpper->getTarget());
-		_doorLower->setTarget(constrain(map(_currentTargetTemp, minTargetTemp, maxTargetTemp, 0, 255), 0, 255));
+		//_doorLower->setTarget(constrain(map(_currentTargetTemp, minTargetTemp, maxTargetTemp, 0, 255), 0, 255));
+    if (_currentTargetTemp > _tempAmbient->getTemperature())
+    {
+      _doorLower->setTarget(255);
+    }
+    else
+    {
+      _doorLower->setTarget(0);
+    }
 	}
 }
 //provides for minimum compressor cycle time, max frequency is approximate 1 cycle/minute
